@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BGDatabase.h"
+#import "BGDatabaseAccesser.h"
 
-@interface BGPerson : NSObject <BGDatabase>
+@interface BGPerson : NSObject <BGDatabaseAccessible>
 
 @property (nonatomic, copy) NSString *pid;
 @property (nonatomic, copy) NSString *name;

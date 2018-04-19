@@ -6,7 +6,7 @@
 //
 
 #import "BGDatabaseTableInfo.h"
-#import "BGDatabase.h"
+#import "BGDatabaseAccessible.h"
 #import <YYModel/YYModel.h>
 
 static inline BGDatabaseColunType BGColumnTypeForProperty(YYClassPropertyInfo *property) {
@@ -83,12 +83,12 @@ static inline BGDatabaseColunType BGColumnTypeForProperty(YYClassPropertyInfo *p
         YYClassInfo *classInfo = [YYClassInfo classInfoWithClass:cls];
         NSString *tableName = classInfo.name;
         if ([cls respondsToSelector:@selector(tableName)]) {
-            tableName = [(id<BGDatabase>)cls tableName];
+            tableName = [(id<BGDatabaseAccessible>)cls tableName];
         }
         self.tableName = tableName;
         NSSet<NSString *> *propertyBlacklist = [NSSet setWithArray:@[@"debugDescription", @"description", @"hash", @"superclass"]];
         if ([cls respondsToSelector:@selector(databasePropertyBlacklist)]) {
-            NSArray *blacklist = [(id<BGDatabase>)cls databasePropertyBlacklist];
+            NSArray *blacklist = [(id<BGDatabaseAccessible>)cls databasePropertyBlacklist];
             if (blacklist) {
                 NSMutableSet *tempSet = [NSMutableSet setWithSet:propertyBlacklist];
                 [tempSet addObjectsFromArray:blacklist];
@@ -97,7 +97,7 @@ static inline BGDatabaseColunType BGColumnTypeForProperty(YYClassPropertyInfo *p
         }
         NSDictionary<NSString *, NSString *> *propertyColumnMapper = nil;
         if ([cls respondsToSelector:@selector(propertyColumnMapper)]) {
-            propertyColumnMapper = [(id<BGDatabase>)cls propertyColumnMapper];
+            propertyColumnMapper = [(id<BGDatabaseAccessible>)cls propertyColumnMapper];
         }
         NSArray<YYClassPropertyInfo *> *properties = classInfo.propertyInfos.allValues;
         NSMutableArray<BGDatabaseColumnInfo *> *columns = [NSMutableArray arrayWithCapacity:properties.count];
@@ -115,7 +115,7 @@ static inline BGDatabaseColunType BGColumnTypeForProperty(YYClassPropertyInfo *p
             column.columnName = columnName;
             column.type = BGColumnTypeForProperty(property);
             if ([cls respondsToSelector:@selector(configColumn:forProperty:)]) {
-                [(id<BGDatabase>)cls configColumn:column forProperty:property.name];
+                [(id<BGDatabaseAccessible>)cls configColumn:column forProperty:property.name];
             }
             if (column.type == BGDatabaseColunTypeUnknown) {     // 类型不匹配 并且外面也没指定
                 continue;

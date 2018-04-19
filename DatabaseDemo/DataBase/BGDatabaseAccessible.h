@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "BGDatabaseColumnInfo.h"
 
-@protocol BGDatabase <NSObject>
+@protocol BGDatabaseAccessible <NSObject>
 
 @optional
 + (NSString *)tableName;

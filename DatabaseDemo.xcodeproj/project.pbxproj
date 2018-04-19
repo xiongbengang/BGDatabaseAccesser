@@ -40,7 +40,7 @@
 		2D987AA820883422009894B5 /* BGDatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseConnection.m; sourceTree = "<group>"; };
 		2D987AAA20883422009894B5 /* BGDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseQueue.m; sourceTree = "<group>"; };
 		2D987AAC20883422009894B5 /* BGBaseDataAccesser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGBaseDataAccesser.h; sourceTree = "<group>"; };
-		2D987AAD20883422009894B5 /* BGDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabase.h; sourceTree = "<group>"; };
+		2D987AAD20883422009894B5 /* BGDatabaseAccessible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseAccessible.h; sourceTree = "<group>"; };
 		2DB722122080532D0042FA6F /* DatabaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatabaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DB722152080532D0042FA6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DB722162080532D0042FA6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		2DBDF60F2088A26500FADC44 /* BGDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseManager.h; sourceTree = "<group>"; };
 		2DBDF6102088A29500FADC44 /* BGDemoDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGDemoDatabaseManager.h; sourceTree = "<group>"; };
 		2DBDF6112088A29500FADC44 /* BGDemoDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGDemoDatabaseManager.m; sourceTree = "<group>"; };
+		2DBDF6132088AD8E00FADC44 /* BGDatabaseAccesser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGDatabaseAccesser.h; sourceTree = "<group>"; };
 		8A78024B62D1ACEBDEF5D83C /* libPods-DatabaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DatabaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		945F5224A547692843BC0104 /* Pods-DatabaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DatabaseDemo/Pods-DatabaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +90,7 @@
 		2D987A9E20883422009894B5 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				2D987AAD20883422009894B5 /* BGDatabase.h */,
+				2D987AAD20883422009894B5 /* BGDatabaseAccessible.h */,
 				2DBDF60F2088A26500FADC44 /* BGDatabaseManager.h */,
 				2D987AA420883422009894B5 /* BGDatabaseManager.m */,
 				2D987AA120883422009894B5 /* BGDatabaseConnection.h */,
@@ -104,6 +105,7 @@
 				2DBDF60420889DBC00FADC44 /* BGBaseDataEngine.m */,
 				2D987AAC20883422009894B5 /* BGBaseDataAccesser.h */,
 				2D987AA520883422009894B5 /* BGBaseDataAccesser.m */,
+				2DBDF6132088AD8E00FADC44 /* BGDatabaseAccesser.h */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";

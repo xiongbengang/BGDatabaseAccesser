@@ -7,7 +7,7 @@
 
 #import "BGBaseDataAccesser.h"
 #import <YYModel/YYModel.h>
-#import "BGDatabase.h"
+#import "BGDatabaseAccessible.h"
 
 @interface BGBaseDataAccesser();
 
@@ -208,7 +208,7 @@
                 break;
         }
         if ([item respondsToSelector:@selector(setValueForProperty:dabaseValue:)]) {
-            [(id<BGDatabase>)item setValueForProperty:columnInfo.propertyName dabaseValue:value];
+            [(id<BGDatabaseAccessible>)item setValueForProperty:columnInfo.propertyName dabaseValue:value];
         } else {
             [item setValue:value forKey:columnInfo.propertyName];
         }
