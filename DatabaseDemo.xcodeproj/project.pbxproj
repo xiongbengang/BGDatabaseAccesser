@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D987AAF20883422009894B5 /* BGDatabaseTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D987AA020883422009894B5 /* BGDatabaseTableInfo.m */; };
-		2D987AB120883422009894B5 /* BGRunDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D987AA420883422009894B5 /* BGRunDatabaseManager.m */; };
+		2D987AB120883422009894B5 /* BGDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D987AA420883422009894B5 /* BGDatabaseManager.m */; };
 		2D987AB220883422009894B5 /* BGBaseDataAccesser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D987AA520883422009894B5 /* BGBaseDataAccesser.m */; };
 		2D987AB320883422009894B5 /* BGDatabaseColumnInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D987AA720883422009894B5 /* BGDatabaseColumnInfo.m */; };
 		2D987AB420883422009894B5 /* BGDatabaseConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D987AA820883422009894B5 /* BGDatabaseConnection.m */; };
@@ -19,6 +19,11 @@
 		2DB7221F2080532F0042FA6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7221E2080532F0042FA6F /* Assets.xcassets */; };
 		2DB722222080532F0042FA6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB722202080532F0042FA6F /* LaunchScreen.storyboard */; };
 		2DB722252080532F0042FA6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB722242080532F0042FA6F /* main.m */; };
+		2DBDF60520889DBC00FADC44 /* BGBaseDataEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF60420889DBC00FADC44 /* BGBaseDataEngine.m */; };
+		2DBDF6082088A08100FADC44 /* BGPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF6072088A08100FADC44 /* BGPerson.m */; };
+		2DBDF60B2088A16900FADC44 /* BGPersonEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF60A2088A16900FADC44 /* BGPersonEngine.m */; };
+		2DBDF60E2088A19A00FADC44 /* BGPersonAccesser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF60D2088A19A00FADC44 /* BGPersonAccesser.m */; };
+		2DBDF6122088A29500FADC44 /* BGDemoDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF6112088A29500FADC44 /* BGDemoDatabaseManager.m */; };
 		E99532CAE7681DC4BE72B4EE /* libPods-DatabaseDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78024B62D1ACEBDEF5D83C /* libPods-DatabaseDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -28,16 +33,14 @@
 		2D987AA020883422009894B5 /* BGDatabaseTableInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseTableInfo.m; sourceTree = "<group>"; };
 		2D987AA120883422009894B5 /* BGDatabaseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseConnection.h; sourceTree = "<group>"; };
 		2D987AA220883422009894B5 /* BGDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseQueue.h; sourceTree = "<group>"; };
-		2D987AA420883422009894B5 /* BGRunDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGRunDatabaseManager.m; sourceTree = "<group>"; };
+		2D987AA420883422009894B5 /* BGDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseManager.m; sourceTree = "<group>"; };
 		2D987AA520883422009894B5 /* BGBaseDataAccesser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGBaseDataAccesser.m; sourceTree = "<group>"; };
 		2D987AA620883422009894B5 /* BGDatabaseTableInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseTableInfo.h; sourceTree = "<group>"; };
 		2D987AA720883422009894B5 /* BGDatabaseColumnInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseColumnInfo.m; sourceTree = "<group>"; };
 		2D987AA820883422009894B5 /* BGDatabaseConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseConnection.m; sourceTree = "<group>"; };
 		2D987AAA20883422009894B5 /* BGDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDatabaseQueue.m; sourceTree = "<group>"; };
-		2D987AAB20883422009894B5 /* BGDatabaseEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseEngineProtocol.h; sourceTree = "<group>"; };
 		2D987AAC20883422009894B5 /* BGBaseDataAccesser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGBaseDataAccesser.h; sourceTree = "<group>"; };
 		2D987AAD20883422009894B5 /* BGDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabase.h; sourceTree = "<group>"; };
-		2D987AAE20883422009894B5 /* BGRunDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGRunDatabaseManager.h; sourceTree = "<group>"; };
 		2DB722122080532D0042FA6F /* DatabaseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatabaseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DB722152080532D0042FA6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DB722162080532D0042FA6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -48,6 +51,17 @@
 		2DB722212080532F0042FA6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DB722232080532F0042FA6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DB722242080532F0042FA6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2DBDF60320889DBB00FADC44 /* BGBaseDataEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGBaseDataEngine.h; sourceTree = "<group>"; };
+		2DBDF60420889DBC00FADC44 /* BGBaseDataEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGBaseDataEngine.m; sourceTree = "<group>"; };
+		2DBDF6062088A08100FADC44 /* BGPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGPerson.h; sourceTree = "<group>"; };
+		2DBDF6072088A08100FADC44 /* BGPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGPerson.m; sourceTree = "<group>"; };
+		2DBDF6092088A16900FADC44 /* BGPersonEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGPersonEngine.h; sourceTree = "<group>"; };
+		2DBDF60A2088A16900FADC44 /* BGPersonEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGPersonEngine.m; sourceTree = "<group>"; };
+		2DBDF60C2088A19A00FADC44 /* BGPersonAccesser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGPersonAccesser.h; sourceTree = "<group>"; };
+		2DBDF60D2088A19A00FADC44 /* BGPersonAccesser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGPersonAccesser.m; sourceTree = "<group>"; };
+		2DBDF60F2088A26500FADC44 /* BGDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDatabaseManager.h; sourceTree = "<group>"; };
+		2DBDF6102088A29500FADC44 /* BGDemoDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGDemoDatabaseManager.h; sourceTree = "<group>"; };
+		2DBDF6112088A29500FADC44 /* BGDemoDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGDemoDatabaseManager.m; sourceTree = "<group>"; };
 		8A78024B62D1ACEBDEF5D83C /* libPods-DatabaseDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DatabaseDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		945F5224A547692843BC0104 /* Pods-DatabaseDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DatabaseDemo/Pods-DatabaseDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,8 +89,9 @@
 		2D987A9E20883422009894B5 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				2D987AAE20883422009894B5 /* BGRunDatabaseManager.h */,
-				2D987AA420883422009894B5 /* BGRunDatabaseManager.m */,
+				2D987AAD20883422009894B5 /* BGDatabase.h */,
+				2DBDF60F2088A26500FADC44 /* BGDatabaseManager.h */,
+				2D987AA420883422009894B5 /* BGDatabaseManager.m */,
 				2D987AA120883422009894B5 /* BGDatabaseConnection.h */,
 				2D987AA820883422009894B5 /* BGDatabaseConnection.m */,
 				2D987AA620883422009894B5 /* BGDatabaseTableInfo.h */,
@@ -85,10 +100,10 @@
 				2D987AA720883422009894B5 /* BGDatabaseColumnInfo.m */,
 				2D987AA220883422009894B5 /* BGDatabaseQueue.h */,
 				2D987AAA20883422009894B5 /* BGDatabaseQueue.m */,
+				2DBDF60320889DBB00FADC44 /* BGBaseDataEngine.h */,
+				2DBDF60420889DBC00FADC44 /* BGBaseDataEngine.m */,
 				2D987AAC20883422009894B5 /* BGBaseDataAccesser.h */,
 				2D987AA520883422009894B5 /* BGBaseDataAccesser.m */,
-				2D987AAB20883422009894B5 /* BGDatabaseEngineProtocol.h */,
-				2D987AAD20883422009894B5 /* BGDatabase.h */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -124,6 +139,14 @@
 				2DB722202080532F0042FA6F /* LaunchScreen.storyboard */,
 				2DB722232080532F0042FA6F /* Info.plist */,
 				2DB722242080532F0042FA6F /* main.m */,
+				2DBDF6062088A08100FADC44 /* BGPerson.h */,
+				2DBDF6072088A08100FADC44 /* BGPerson.m */,
+				2DBDF60C2088A19A00FADC44 /* BGPersonAccesser.h */,
+				2DBDF60D2088A19A00FADC44 /* BGPersonAccesser.m */,
+				2DBDF6092088A16900FADC44 /* BGPersonEngine.h */,
+				2DBDF60A2088A16900FADC44 /* BGPersonEngine.m */,
+				2DBDF6102088A29500FADC44 /* BGDemoDatabaseManager.h */,
+				2DBDF6112088A29500FADC44 /* BGDemoDatabaseManager.m */,
 			);
 			path = DatabaseDemo;
 			sourceTree = "<group>";
@@ -229,14 +252,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DBDF60E2088A19A00FADC44 /* BGPersonAccesser.m in Sources */,
 				2DB7221A2080532D0042FA6F /* ViewController.m in Sources */,
-				2D987AB120883422009894B5 /* BGRunDatabaseManager.m in Sources */,
+				2D987AB120883422009894B5 /* BGDatabaseManager.m in Sources */,
 				2D987AB320883422009894B5 /* BGDatabaseColumnInfo.m in Sources */,
 				2DB722252080532F0042FA6F /* main.m in Sources */,
 				2D987AB420883422009894B5 /* BGDatabaseConnection.m in Sources */,
+				2DBDF60B2088A16900FADC44 /* BGPersonEngine.m in Sources */,
+				2DBDF60520889DBC00FADC44 /* BGBaseDataEngine.m in Sources */,
 				2DB722172080532D0042FA6F /* AppDelegate.m in Sources */,
 				2D987AB220883422009894B5 /* BGBaseDataAccesser.m in Sources */,
+				2DBDF6082088A08100FADC44 /* BGPerson.m in Sources */,
 				2D987AAF20883422009894B5 /* BGDatabaseTableInfo.m in Sources */,
+				2DBDF6122088A29500FADC44 /* BGDemoDatabaseManager.m in Sources */,
 				2D987AB520883422009894B5 /* BGDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,12 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FMDB/FMDB.h>
 #import "BGDatabaseQueue.h"
 
-@interface BGRunDatabaseManager : NSObject
+@interface BGDatabaseManager : NSObject
 
 @property (nonatomic, assign, readonly) NSInteger dbVersion;
+@property (nonatomic, strong, readonly) FMDatabase *database;
 @property (nonatomic, strong, readonly) BGDatabaseQueue *databaseQueue;
+
+- (BOOL)createTableForClass:(Class)cls inDatabase:(FMDatabase *)database;
 
 - (void)initializeWithDBPath:(NSString *)dbPath;
 - (void)onConfigure:(FMDatabase *)database;

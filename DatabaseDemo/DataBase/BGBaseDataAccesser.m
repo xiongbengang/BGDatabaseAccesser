@@ -34,29 +34,6 @@
     @throw @"must has specified itemClass";
 }
 
-- (BOOL)createTable
-{
-    NSMutableArray *columnComponents = [NSMutableArray arrayWithCapacity:self.tableInfo.columns.count];
-    for (BGDatabaseColumnInfo *column in self.tableInfo.columns) {
-        NSString *columnTypeDesc = BGDatabaseColumnTypeDesc(column.type);
-        NSMutableString *columnString = [NSMutableString stringWithFormat:@"%@ %@", column.columnName, columnTypeDesc];
-        BOOL shouldInsert = NO;
-        if ([column isPrimaryKey]) {
-            shouldInsert = YES;
-            [columnString appendString:@" PRIMARY KEY"];
-        }
-        if (shouldInsert) {
-            [columnComponents insertObject:columnString atIndex:0];
-        } else {
-            [columnComponents addObject:columnString];
-        }
-    }
-    NSString *columnsString = [columnComponents componentsJoinedByString:@","];
-    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(%@)", self.tableInfo.tableName, columnsString];
-    BOOL executeResult = [self.database executeUpdate:sql];
-    return executeResult;
-}
-
 - (BOOL)insertObject:(id)obj
 {
     NSParameterAssert([obj isKindOfClass:[self itemClass]]);

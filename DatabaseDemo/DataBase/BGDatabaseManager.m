@@ -5,21 +5,21 @@
 //  Created by Bengang on 11/01/2018.
 //
 
-#import "BGRunDatabaseManager.h"
+#import "BGDatabaseManager.h"
 #import "BGDatabaseConnection.h"
+#import "BGDatabaseTableInfo.h"
 
 const NSInteger BGRunDBVersion = 1;
 
-@interface BGRunDatabaseManager () <BGDatabaseConnectionDelegate>
+@interface BGDatabaseManager () <BGDatabaseConnectionDelegate>
 
-@property (nonatomic, strong) FMDatabase *database;
 @property (nonatomic, strong) BGDatabaseConnection *connection;
 @property (nonatomic, strong) BGDatabaseQueue *dbQueue;
 @property (nonatomic, strong) BGDatabaseQueue *dbMainQueue;
 
 @end
 
-@implementation BGRunDatabaseManager
+@implementation BGDatabaseManager
 
 - (void)initializeWithDBPath:(NSString *)dbPath
 {
@@ -45,6 +45,30 @@ const NSInteger BGRunDBVersion = 1;
 - (FMDatabase *)database
 {
     return self.connection.database;
+}
+
+- (BOOL)createTableForClass:(Class)cls inDatabase:(FMDatabase *)database
+{
+    BGDatabaseTableInfo *databaseInfo = [BGDatabaseTableInfo tableInfoForClass:cls];
+    NSMutableArray *columnComponents = [NSMutableArray arrayWithCapacity:databaseInfo.columns.count];
+    for (BGDatabaseColumnInfo *column in databaseInfo.columns) {
+        NSString *columnTypeDesc = BGDatabaseColumnTypeDesc(column.type);
+        NSMutableString *columnString = [NSMutableString stringWithFormat:@"%@ %@", column.columnName, columnTypeDesc];
+        BOOL shouldInsert = NO;
+        if ([column isPrimaryKey]) {
+            shouldInsert = YES;
+            [columnString appendString:@" PRIMARY KEY"];
+        }
+        if (shouldInsert) {
+            [columnComponents insertObject:columnString atIndex:0];
+        } else {
+            [columnComponents addObject:columnString];
+        }
+    }
+    NSString *columnsString = [columnComponents componentsJoinedByString:@","];
+    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(%@)", databaseInfo.tableName, columnsString];
+    BOOL executeResult = [database executeUpdate:sql];
+    return executeResult;
 }
 
 #pragma mark - BGDatabaseConnectionDelegate

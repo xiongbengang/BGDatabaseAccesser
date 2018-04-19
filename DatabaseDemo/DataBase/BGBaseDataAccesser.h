@@ -21,8 +21,6 @@
 
 - (instancetype)initWithDatabase:(FMDatabase *)database;
 
-- (BOOL)createTable;
-
 - (BOOL)insertObject:(id)obj;
 
 - (BOOL)updateWithItem:(id)obj;

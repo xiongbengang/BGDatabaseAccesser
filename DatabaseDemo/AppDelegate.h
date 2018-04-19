@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BGDemoDatabaseManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (nonatomic, strong) BGDemoDatabaseManager *databaseManager;
 @property (strong, nonatomic) UIWindow *window;
 
 
