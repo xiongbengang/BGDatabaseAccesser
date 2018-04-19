@@ -21,9 +21,9 @@ const NSInteger BGRunDBVersion = 1;
 
 @implementation BGRunDatabaseManager
 
-- (void)initializeWithDBPath:(NSString *)dbPath dbVersion:(NSInteger)dbVersion
+- (void)initializeWithDBPath:(NSString *)dbPath
 {
-    self.connection = [[BGDatabaseConnection alloc] initWithPath:dbPath version:dbVersion delegate:self];
+    self.connection = [[BGDatabaseConnection alloc] initWithPath:dbPath version:self.dbVersion delegate:self];
 }
 
 #pragma mark - BGDatabaseEngineProtocol
@@ -47,10 +47,29 @@ const NSInteger BGRunDBVersion = 1;
     return self.connection.database;
 }
 
-
 #pragma mark - BGDatabaseConnectionDelegate
 
+- (void)onConfigure:(FMDatabase *)database
+{
+    
+}
+
 - (void)onCreate:(FMDatabase *)database
+{
+    
+}
+
+- (void)onUpgrade:(FMDatabase *)database oldVersion:(NSInteger)oldVersion newVersion:(NSInteger)newVersion
+{
+    
+}
+
+- (void)onDowngrade:(FMDatabase *)database oldVersion:(NSInteger)oldVersion newVersion:(NSInteger)newVersion
+{
+    
+}
+
+- (void)onOpen:(FMDatabase *)database
 {
     
 }
