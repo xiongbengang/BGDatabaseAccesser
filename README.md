@@ -24,13 +24,13 @@ BGDemoDatabaseManager
 
 - (NSInteger)dbVersion
 {
-return 2;
+    return 2;
 }
 
 - (void)onCreate:(FMDatabase *)database
 {
-[super onCreate:database];
-[self createTableForClass:[BGPerson class] inDatabase:database];
+    [super onCreate:database];
+    [self createTableForClass:[BGPerson class] inDatabase:database];
 }
 
 @end
@@ -43,17 +43,17 @@ BGPersonEngine
 
 - (void)insertPerson:(BGPerson *)person
 {
-[self inDatabase:^(FMDatabase *database) {
-[self.personAccesser insertObject:person];
-}];
+    [self inDatabase:^(FMDatabase *database) {
+        [self.personAccesser insertObject:person];
+    }];
 }
 
 - (BGPersonAccesser *)personAccesser
 {
-if (!_personAccesser) {
-_personAccesser = [[BGPersonAccesser alloc] initWithDatabase:self.database];
-}
-return _personAccesser;
+    if (!_personAccesser) {
+        _personAccesser = [[BGPersonAccesser alloc] initWithDatabase:self.database];
+    }
+    return _personAccesser;
 }
 
 @end
@@ -65,20 +65,19 @@ ViewController
 ```
 @implementation ViewController
 
-- (void)viewDidLoad {
-[super viewDidLoad];
-// Do any additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad 
+{
+    [super viewDidLoad];
+    BGDemoDatabaseManager *databaseManager = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).databaseManager;
 
-BGDemoDatabaseManager *databaseManager = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).databaseManager;
+    BGPerson *person = [[BGPerson alloc] init];
+    person.pid = @"1001";
+    person.age = 12;
+    person.name = @"小明";
+    person.address = @"北京市";
 
-BGPerson *person = [[BGPerson alloc] init];
-person.pid = @"1001";
-person.age = 12;
-person.name = @"小明";
-person.address = @"北京市";
-
-BGPersonEngine *personEngine = [[BGPersonEngine alloc] initWithDatabaseProvider:databaseManager];
-[personEngine insertPerson:person];
+    BGPersonEngine *personEngine = [[BGPersonEngine alloc] initWithDatabaseProvider:databaseManager];
+    [personEngine insertPerson:person];
 }
 
 @end
