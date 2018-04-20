@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    self.databaseManager = [BGDemoDatabaseManager alloc] init];
+    self.databaseManager = [[BGDemoDatabaseManager alloc] init];
     NSString *dbPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"demo.db"];
     [self.databaseManager initializeWithDBPath:dbPath];
     return YES;
