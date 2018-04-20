@@ -69,6 +69,8 @@ ViewController
 [super viewDidLoad];
 // Do any additional setup after loading the view, typically from a nib.
 
+=======
+>>>>>>> d1e5174a549d2cb2a26d48447ada58180d5c98ce
 BGDemoDatabaseManager *databaseManager = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).databaseManager;
 
 BGPerson *person = [[BGPerson alloc] init];
@@ -79,6 +81,7 @@ person.address = @"北京市";
 
 BGPersonEngine *personEngine = [[BGPersonEngine alloc] initWithDatabaseProvider:databaseManager];
 [personEngine insertPerson:person];
+<<<<<<< HEAD
 }
 
 @end
