@@ -68,6 +68,7 @@ ViewController
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+
     BGDemoDatabaseManager *databaseManager = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).databaseManager;
 
     BGPerson *person = [[BGPerson alloc] init];
