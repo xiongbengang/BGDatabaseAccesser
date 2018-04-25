@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *insert;
+@property (weak, nonatomic) IBOutlet UIButton *update;
+@property (weak, nonatomic) IBOutlet UIButton *update2;
 
 @end
 

@@ -7,7 +7,10 @@
 //
 
 #import "BGBaseDataAccesser.h"
+#import "BGPerson.h"
 
 @interface BGPersonAccesser : BGBaseDataAccesser
+
+- (long long)queryMaxPersonId;
 
 @end

@@ -15,15 +15,22 @@
     return @{@"pid": @"id"};
 }
 
++ (void)configColumn:(BGDatabaseColumnInfo *)columnInfo forProperty:(NSString *)property
+{
+    if ([property isEqualToString:@"pid"]) {
+        columnInfo.isPrimaryKey = YES;
+    }
+}
+
 + (NSString *)tableName
 {
     return @"Person";
 }
-
-+ (NSArray<NSString *> *)databasePropertyBlacklist
-{
-    return @[@"address"];
-}
+//
+//+ (NSArray<NSString *> *)databasePropertyBlacklist
+//{
+//    return @[@"address"];
+//}
 
 
 @end

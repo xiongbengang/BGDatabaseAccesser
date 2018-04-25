@@ -14,6 +14,4 @@
 
 @property (nonatomic, strong) BGPersonAccesser *personAccesser;
 
-- (void)insertPerson:(BGPerson *)person;
-
 @end

@@ -25,13 +25,25 @@
 
 - (BOOL)updateWithItem:(id)obj;
 
+- (BOOL)updateWithItem:(id)obj forKeyPaths:(NSArray<NSString *> *)keyPaths;
+
+- (BOOL)updateWithItem:(id)obj ignoredKeyPaths:(NSArray<NSString *> *)ignoredKeyPaths;
+
+- (BOOL)updateWithKeyPaths:(NSArray<NSString *> *)keyPaths values:(NSArray *)values condition:(NSString *)condition, ... NS_REQUIRES_NIL_TERMINATION;
+
 - (BOOL)deleteAll;
+
+- (BOOL)deleteItem:(id)obj;
 
 - (BOOL)deleteWithCondition:(NSString *)condition, ...;
 
 - (id)itemFromResultSet:(FMResultSet *)resultSet;
 
+- (NSArray *)queryAllItems;
+
 - (NSArray *)queryItemsWithCondition:(NSString *)condition, ...;
+
+- (BOOL)itemExists:(id)item;
 
 - (BOOL)existsForQuery:(NSString *)query, ...;
 

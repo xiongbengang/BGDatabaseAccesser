@@ -7,13 +7,19 @@
 //
 
 #import "BGPersonAccesser.h"
-#import "BGPerson.h"
 
 @implementation BGPersonAccesser
 
 - (Class)itemClass
 {
     return [BGPerson class];
+}
+
+- (long long)queryMaxPersonId
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT MAX(id) FROM %@", self.tableInfo.tableName];
+    long long maxPersonId = [self longlongWithDefault:-1 sql:sql];
+    return maxPersonId;
 }
 
 @end

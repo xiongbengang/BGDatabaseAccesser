@@ -59,45 +59,77 @@
 
 - (BOOL)updateWithItem:(id)obj
 {
-    return [self updateWithItem:obj conditions:nil];
+    return [self updateWithItem:obj updateKeyPaths:nil ignoredKeyPaths:nil];
 }
 
-- (BOOL)updateWithItem:(id)obj conditions:(NSString *)conditions, ...
+- (BOOL)updateWithItem:(id)obj ignoredKeyPaths:(NSArray<NSString *> *)ignoredKeyPaths
+{
+    return [self updateWithItem:obj updateKeyPaths:nil ignoredKeyPaths:ignoredKeyPaths];
+}
+
+- (BOOL)updateWithItem:(id)obj forKeyPaths:(NSArray<NSString *> *)keyPaths
+{
+    return [self updateWithItem:obj updateKeyPaths:keyPaths ignoredKeyPaths:nil];
+}
+
+- (BOOL)updateWithKeyPaths:(NSArray<NSString *> *)keyPaths values:(NSArray *)values condition:(NSString *)condition, ...
+{
+    NSParameterAssert(keyPaths.count == values.count);
+    NSMutableArray *updateComponents = [NSMutableArray arrayWithCapacity:keyPaths.count];
+    for (int i = 0; i < self.tableInfo.columns.count; i++) {
+        BGDatabaseColumnInfo *columnInfo = self.tableInfo.columns[i];
+        if (columnInfo.systemManaged) {  //  系统控制的字段 自增字段
+            continue;
+        }
+        if (![keyPaths containsObject:columnInfo.propertyName]) {
+            continue;
+        }
+        [updateComponents addObject:[NSString stringWithFormat:@"%@=?", columnInfo.columnName]];
+    }
+    NSString *updateString = [updateComponents componentsJoinedByString:@","];
+    NSMutableArray *arguments = [NSMutableArray arrayWithArray:values];
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@", self.tableInfo.tableName, updateString];
+    if (condition.length) {
+        sql = [sql stringByAppendingFormat:@" %@", condition];
+        va_list args;
+        va_start(args, condition);
+        id obj = nil;
+        while ((obj = va_arg(args, id))) {
+            [arguments addObject:obj];
+        }
+        va_end(args);
+    }
+    BOOL rs = [self.database executeUpdate:sql withArgumentsInArray:arguments];
+    return rs;
+}
+
+- (BOOL)updateWithItem:(id)obj updateKeyPaths:(NSArray<NSString *> *)updateKeyPaths ignoredKeyPaths:(NSArray<NSString *> *)ignoredKeyPaths
 {
     NSParameterAssert([obj isKindOfClass:[self itemClass]]);
-    NSAssert(self.tableInfo.primaryKey, @"Must assign a primary key when condition is nil");
     NSMutableArray *updateValues = [NSMutableArray arrayWithCapacity:self.tableInfo.columns.count];
     NSMutableArray *updateComponents = [NSMutableArray arrayWithCapacity:self.tableInfo.columns.count];
     for (int i = 0; i < self.tableInfo.columns.count; i++) {
         BGDatabaseColumnInfo *columnInfo = self.tableInfo.columns[i];
+        if (columnInfo.systemManaged || columnInfo.isPrimaryKey ||
+            (updateKeyPaths && ![updateKeyPaths containsObject:columnInfo.propertyName]) ||
+            (ignoredKeyPaths && [ignoredKeyPaths containsObject:columnInfo.propertyName])) {
+            continue;
+        }
         id value = [obj valueForKeyPath:columnInfo.propertyName];
-        if (!value || columnInfo.systemManaged) {
+        if (!value) {
             continue;
         }
         [updateValues addObject:value];
         [updateComponents addObject:[NSString stringWithFormat:@"%@=?", columnInfo.columnName]];
     }
     NSString *updateString = [updateComponents componentsJoinedByString:@","];
-    if (!conditions.length) {
-        id primaryKeyValue = [obj valueForKeyPath:self.tableInfo.primaryKey.propertyName];
-        NSAssert(primaryKeyValue, @"Primary key value must not be nil when condition is nil");
-        [updateValues addObject:primaryKeyValue];
-        NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE %@=?", self.tableInfo.tableName, updateString, self.tableInfo.primaryKey.columnName];
-        BOOL rs = [self.database executeUpdate:sql withArgumentsInArray:updateValues];
-        return rs;
-    } else {
-        NSMutableArray *args = [NSMutableArray array];
-        va_list argsList;
-        va_start(argsList, conditions);
-        id arg;
-        while ((arg = va_arg(argsList, id))) {
-            [args addObject:arg];
-        }
-        va_end(argsList);
-        NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE %@", self.tableInfo.tableName, updateString, conditions];
-        BOOL rs = [self.database executeUpdate:sql withArgumentsInArray:args];
-        return rs;
-    }
+    
+    id primaryKeyValue = [obj valueForKeyPath:self.tableInfo.primaryKey.propertyName];
+    NSAssert(primaryKeyValue, @"Primary key value must not be nil");
+    [updateValues addObject:primaryKeyValue];
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE %@=?", self.tableInfo.tableName, updateString, self.tableInfo.primaryKey.columnName];
+    BOOL rs = [self.database executeUpdate:sql withArgumentsInArray:updateValues];
+    return rs;
 }
 
 - (BOOL)deleteAll
@@ -107,14 +139,32 @@
     return rs;
 }
 
+- (BOOL)deleteItem:(id)obj
+{
+    id primaryValue = [obj valueForKeyPath:self.tableInfo.primaryKey.propertyName];
+    NSString *condition = [NSString stringWithFormat:@"WHERE %@=?", self.tableInfo.primaryKey.propertyName];
+    return [self deleteWithCondition:condition, primaryValue];
+}
+
 - (BOOL)deleteWithCondition:(NSString *)condition, ...
 {
-    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@", self.tableInfo.tableName, condition];
+    NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ %@", self.tableInfo.tableName, condition];
     va_list args;
     va_start(args, condition);
     BOOL rs = [self.database executeUpdate:sql withVAList:args];
     va_end(args);
     return rs;
+}
+
+- (BOOL)itemExists:(id)item
+{
+    NSParameterAssert([item isKindOfClass:[self itemClass]]);
+    NSParameterAssert(self.tableInfo.primaryKey);
+    BGDatabaseColumnInfo *primaryKey = self.tableInfo.primaryKey;
+    id primaryValue = [item valueForKeyPath:primaryKey.propertyName];
+    NSString *sql = [NSString stringWithFormat:@"SELECT %@ FROM %@ WHERE %@=?", primaryKey.columnName, self.tableInfo.tableName, primaryKey.columnName];
+    BOOL exists = [self.database executeQuery:sql, primaryValue];
+    return exists;
 }
 
 - (BOOL)existsForQuery:(NSString *)query, ...
@@ -140,6 +190,11 @@
     }
     [rs close];
     return result;
+}
+
+- (NSArray *)queryAllItems
+{
+    return [self queryItemsWithCondition:nil];
 }
 
 - (NSArray *)queryItemsWithCondition:(NSString *)condition, ...

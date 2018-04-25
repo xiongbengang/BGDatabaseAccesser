@@ -10,13 +10,6 @@
 
 @implementation BGPersonEngine
 
-- (void)insertPerson:(BGPerson *)person
-{
-    [self inDatabase:^(FMDatabase *database) {
-        [self.personAccesser insertObject:person];
-    }];
-}
-
 - (BGPersonAccesser *)personAccesser
 {
     if (!_personAccesser) {

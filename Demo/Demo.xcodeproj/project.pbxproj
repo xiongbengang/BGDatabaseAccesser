@@ -17,6 +17,7 @@
 		2DBDF63F20898CA600FADC44 /* BGPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF63A20898CA500FADC44 /* BGPerson.m */; };
 		2DBDF64020898CA600FADC44 /* BGPersonAccesser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF63B20898CA500FADC44 /* BGPersonAccesser.m */; };
 		2DBDF64120898CA600FADC44 /* BGPersonEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDF63D20898CA500FADC44 /* BGPersonEngine.m */; };
+		2DE2AF7B208F71EE00567E43 /* BGPersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2AF7A208F71EE00567E43 /* BGPersonTableViewCell.m */; };
 		7FE8162347F383884B3055D0 /* libPods-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C35209D673A717BF9A97D8 /* libPods-Demo.a */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,8 @@
 		2DBDF63B20898CA500FADC44 /* BGPersonAccesser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGPersonAccesser.m; sourceTree = "<group>"; };
 		2DBDF63C20898CA500FADC44 /* BGPersonAccesser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGPersonAccesser.h; sourceTree = "<group>"; };
 		2DBDF63D20898CA500FADC44 /* BGPersonEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGPersonEngine.m; sourceTree = "<group>"; };
+		2DE2AF79208F71EE00567E43 /* BGPersonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGPersonTableViewCell.h; sourceTree = "<group>"; };
+		2DE2AF7A208F71EE00567E43 /* BGPersonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGPersonTableViewCell.m; sourceTree = "<group>"; };
 		40C35209D673A717BF9A97D8 /* libPods-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D695A14FB8F313643FF967 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		D3850147A4E8FE6C857F084D /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				2DBDF63D20898CA500FADC44 /* BGPersonEngine.m */,
 				2DBDF6202089868D00FADC44 /* AppDelegate.h */,
 				2DBDF6212089868D00FADC44 /* AppDelegate.m */,
+				2DE2AF79208F71EE00567E43 /* BGPersonTableViewCell.h */,
+				2DE2AF7A208F71EE00567E43 /* BGPersonTableViewCell.m */,
 				2DBDF6232089868D00FADC44 /* ViewController.h */,
 				2DBDF6242089868D00FADC44 /* ViewController.m */,
 				2DBDF6262089868D00FADC44 /* Main.storyboard */,
@@ -212,6 +217,7 @@
 				2DBDF64020898CA600FADC44 /* BGPersonAccesser.m in Sources */,
 				2DBDF6252089868D00FADC44 /* ViewController.m in Sources */,
 				2DBDF6302089869000FADC44 /* main.m in Sources */,
+				2DE2AF7B208F71EE00567E43 /* BGPersonTableViewCell.m in Sources */,
 				2DBDF64120898CA600FADC44 /* BGPersonEngine.m in Sources */,
 				2DBDF6222089868D00FADC44 /* AppDelegate.m in Sources */,
 			);
