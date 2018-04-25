@@ -30,6 +30,17 @@
 {
     [super viewDidLoad];
     [self queryAndReloadDatas];
+   
+    
+}
+
+- (BOOL)testExist
+{
+    BGPerson *person = [[BGPerson alloc] init];
+    person.pid = @"1";
+    BOOL exist = [self.personEngine.personAccesser itemExists:person];
+    NSLog(@"execute result %@", @(exist));
+    return exist;
 }
 
 - (void)queryAndReloadDatas

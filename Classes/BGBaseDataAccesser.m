@@ -163,7 +163,7 @@
     BGDatabaseColumnInfo *primaryKey = self.tableInfo.primaryKey;
     id primaryValue = [item valueForKeyPath:primaryKey.propertyName];
     NSString *sql = [NSString stringWithFormat:@"SELECT %@ FROM %@ WHERE %@=?", primaryKey.columnName, self.tableInfo.tableName, primaryKey.columnName];
-    BOOL exists = [self.database executeQuery:sql, primaryValue];
+    BOOL exists = [self existsForQuery:sql, primaryValue];
     return exists;
 }
 
